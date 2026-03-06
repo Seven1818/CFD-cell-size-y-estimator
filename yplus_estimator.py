@@ -9,7 +9,7 @@ Physics pipeline:
   2. Schlichting skin-friction:        Cf   = (2*log10(Re) - 0.65)^(-2.3)
   3. Wall shear stress:                tau_w = 0.5 * rho * U^2 * Cf
   4. Friction velocity:                u_tau = sqrt(tau_w / rho)
-  5. First-cell height:               delta_y = y_plus * nu / u_tau
+  5. First-cell height:               delta_y = y_plus * nu / u_tau* rho
 """
 
 import math
@@ -31,7 +31,7 @@ def compute_reynolds(velocity: float, char_length: float, kinematic_viscosity: f
 def compute_skin_friction(re: float) -> float:
     """
     Return the skin-friction coefficient using the Schlichting empirical
-    correlation for turbulent flat-plate flow:
+    correlation (valid for Re<10^9)
 
         Cf = (2 * log10(Re) - 0.65) ** (-2.3)
     """
@@ -52,11 +52,11 @@ def compute_friction_velocity(tau_w: float, density: float) -> float:
     return math.sqrt(tau_w / density)
 
 
-def compute_cell_size(y_plus: float, kinematic_viscosity: float, u_tau: float) -> float:
-    """Return the first-cell height delta_y = y+ * nu / u_tau."""
+def compute_cell_size(y_plus: float, kinematic_viscosity: float, u_tau: float, density:float) -> float:
+    """Return the first-cell height delta_y = y+ * nu / u_tau*rho."""
     if u_tau <= 0:
         raise ValueError("Friction velocity must be positive.")
-    return y_plus * kinematic_viscosity / u_tau
+    return y_plus * kinematic_viscosity / (u_tau * density)
 
 
 def estimate_cell_size(
@@ -97,7 +97,7 @@ def estimate_cell_size(
     cf = compute_skin_friction(re)
     tau_w = compute_wall_shear_stress(density, velocity, cf)
     u_tau = compute_friction_velocity(tau_w, density)
-    delta_y = compute_cell_size(y_plus, nu, u_tau)
+    delta_y = compute_cell_size(y_plus, nu, u_tau,density)
 
     return {
         "nu": nu,
