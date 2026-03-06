@@ -1,6 +1,5 @@
 """
-Unit tests for the physics calculation functions in yplus_estimator.py.
-Run with: python -m pytest test_yplus_estimator.py -v
+Unit tests for the physics calculation functions in yplus_estimator.py. to Test units (just debugging purposes)
 """
 
 import math
