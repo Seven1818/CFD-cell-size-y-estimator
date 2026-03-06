@@ -118,8 +118,8 @@ class YPlusApp(tk.Tk):
 
     # Colour palette
     BG = "#1e2330"
-    PANEL = "#252c3d"
-    ACCENT = "#4a9eff"
+    PANEL = "#404d6e"
+    ACCENT = "#4aabff"
     TEXT = "#dce3f0"
     LABEL = "#8a95aa"
     RESULT_BG = "#2a3348"
