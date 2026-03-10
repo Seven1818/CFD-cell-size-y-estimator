@@ -128,7 +128,7 @@ class YPlusApp(tk.Tk):
 
     def __init__(self):
         super().__init__()
-        self.title("CFD y⁺ Cell Size Estimator")
+        self.title("CFD y+ Cell Size Estimator")
         self.resizable(False, False)
         self.configure(bg=self.BG)
         self._build_ui()
