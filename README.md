@@ -5,7 +5,7 @@ to achieve a target y⁺ value in CFD wall-bounded flow simulations,
 particularly useful when setting up snappyHexMesh configurations in OpenFOAM.
 
 
-
+![CFD y+ Estimator GUI](GUI_y_2.png)
 ---
 
 ## Why y⁺ matters
