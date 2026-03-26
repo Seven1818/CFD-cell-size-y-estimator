@@ -5,11 +5,11 @@ Estimates the minimum first-cell height required to achieve a target y+ value
 for use in OpenFOAM snappyHexMesh configurations.
 
 Physics pipeline:
-  1. Compute Reynolds number:          Re   = U * L / nu
+  1. Compute Reynolds number:          Re   = U * L *rho/ mu
   2. Schlichting skin-friction:        Cf   = (2*log10(Re) - 0.65)^(-2.3)
   3. Wall shear stress:                tau_w = 0.5 * rho * U^2 * Cf
   4. Friction velocity:                u_tau = sqrt(tau_w / rho)
-  5. First-cell height:               delta_y = y_plus * nu / u_tau* rho
+  5. First-cell height:               delta_y = y_plus * mu / u_tau* rho
 """
 
 import math
@@ -21,11 +21,11 @@ from tkinter import messagebox
 # Core physics functions (no GUI dependency – easy to unit-test)
 # ---------------------------------------------------------------------------
 
-def compute_reynolds(velocity: float, char_length: float, dynamic_viscosity: float) -> float:
-    """Return the Reynolds number Re = U * L / nu."""
+def compute_reynolds(velocity: float, char_length: float, dynamic_viscosity: float,density:float) -> float:
+    """Return the Reynolds number Re = U * L *rho/ mu."""
     if dynamic_viscosity <= 0:
         raise ValueError("Dynamic viscosity must be positive.")
-    return velocity * char_length / dynamic_viscosity
+    return velocity * char_length *density/ dynamic_viscosity
 
 
 def compute_skin_friction(re: float) -> float:
@@ -53,7 +53,7 @@ def compute_friction_velocity(tau_w: float, density: float) -> float:
 
 
 def compute_cell_size(y_plus: float, dynamic_viscosity: float, u_tau: float, density:float) -> float:
-    """Return the first-cell height delta_y = y+ * nu / u_tau*rho."""
+    """Return the first-cell height delta_y = y+ * mu / u_tau*rho."""
     if u_tau <= 0:
         raise ValueError("Friction velocity must be positive.")
     return y_plus * dynamic_viscosity / (u_tau * density)
@@ -93,14 +93,14 @@ def estimate_cell_size(
         raise ValueError("y+ must be positive.")
 
     nu = dynamic_viscosity / density
-    re = compute_reynolds(velocity, char_length, nu)
+    re = compute_reynolds(velocity, char_length, dynamic_viscosity, density)
     cf = compute_skin_friction(re)
     tau_w = compute_wall_shear_stress(density, velocity, cf)
     u_tau = compute_friction_velocity(tau_w, density)
-    delta_y = compute_cell_size(y_plus, nu, u_tau,density)
+    delta_y = compute_cell_size(y_plus, dynamic_viscosity, u_tau,density)
 
     return {
-        "nu": nu,
+        "mu": dynamic_viscosity,
         "Re": re,
         "Cf": cf,
         "tau_w": tau_w,
