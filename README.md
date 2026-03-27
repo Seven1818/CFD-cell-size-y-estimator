@@ -81,17 +81,6 @@ print(f"First-cell height: {result['delta_y']:.4e} m")
 print(f"Reynolds number:   {result['Re']:.3e}")
 ```
 
-### Example output (air at 30 m/s, L = 1.5 m, y⁺ = 1)
-
-| Parameter | Value |
-|---|---|
-| Reynolds number Re | 3.042e+06 |
-| Skin-friction Cf | 3.21e-03 |
-| Wall shear stress τ_w | 1.77 Pa |
-| Friction velocity u_τ | 1.20 m/s |
-| **First-cell height Δy** | **1.23e-05 m** |
-
----
 
 ## Inputs
 
@@ -110,7 +99,7 @@ print(f"Reynolds number:   {result['Re']:.3e}")
 - Assumes flat-plate turbulent boundary layer (Schlichting correlation)
 - Not valid for separated flows, strong pressure gradients, or 
   Re > 10⁹
-- Use as an **initial estimate** — validate against your simulation
+- Use as an **initial estimate** ! validate against your simulation
 
 ---
 
