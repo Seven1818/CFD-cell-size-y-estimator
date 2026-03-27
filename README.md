@@ -19,7 +19,7 @@ for your chosen turbulence modelling approach:
 | 30 < y⁺ < 300 | Wall functions (high-Re models) |
 
 Getting this wrong leads to inaccurate wall shear stress, heat transfer 
-predictions, and drag estimates — even if the rest of your mesh is excellent.
+predictions, and drag estimates.
 
 ---
 
