@@ -112,8 +112,7 @@ MSc Mechanical Engineering — TU Delft (Fluid Dynamics & CFD)
 [GitHub](https://github.com/Seven1818)
 
 ## References
-[1] CFD-Online Community. Y Plus Wall Distance Estimation. *url: https://www.cfd-online.
-com/Wiki/Y_plus_wall_distance_estimation* (visited on 03/12/2026)
+[1] CFD-Online Community. Y Plus Wall Distance Estimation. *url: https://www.cfd-online.com/Wiki/Y_plus_wall_distance_estimation* (visited on 03/12/2026)
 
 ---
 
