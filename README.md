@@ -8,6 +8,19 @@ particularly useful when setting up snappyHexMesh configurations in OpenFOAM.
 ![CFD y+ Estimator GUI](/Images/GUI_y_2.png)
 ---
 
+## Installation
+
+No dependencies beyond the Python standard library.
+```bash
+git clone https://github.com/Seven1818/yplus-estimator.git
+cd yplus-estimator
+python yplus_estimator.py
+```
+
+Tested on Python 3.9+.
+
+---
+
 ## Why y⁺ matters
 
 The y⁺ value determines whether your near-wall mesh resolution is appropriate 
@@ -25,7 +38,7 @@ predictions, and drag estimates.
 
 ## Physics pipeline
 
-The tool implements the following sequence:
+The tool implements the following sequence [1]:
 
 1. **Reynolds number:** Re = U · L · ρ/μ  
 2. **Skin-friction coefficient** (Schlichting correlation, valid for Re < 10⁹):  
@@ -40,18 +53,6 @@ The tool implements the following sequence:
 
 ---
 
-## Installation
-
-No dependencies beyond the Python standard library.
-```bash
-git clone https://github.com/Seven1818/yplus-estimator.git
-cd yplus-estimator
-python yplus_estimator.py
-```
-
-Tested on Python 3.9+.
-
----
 
 ## Usage
 
@@ -109,6 +110,10 @@ print(f"Reynolds number:   {result['Re']:.3e}")
 MSc Mechanical Engineering — TU Delft (Fluid Dynamics & CFD)  
 [LinkedIn](https://www.linkedin.com/in/massimiliano-toffoli/) · 
 [GitHub](https://github.com/Seven1818)
+
+## References
+[1] CFD-Online Community. Y Plus Wall Distance Estimation. *url: https://www.cfd-online.
+com/Wiki/Y_plus_wall_distance_estimation* (visited on 03/12/2026)
 
 ---
 
