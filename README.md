@@ -27,12 +27,12 @@ predictions, and drag estimates.
 
 The tool implements the following sequence:
 
-1. **Reynolds number:** Re = U · L · ρ/ ν  
+1. **Reynolds number:** Re = U · L · ρ/μ  
 2. **Skin-friction coefficient** (Schlichting correlation, valid for Re < 10⁹):  
    Cf = (2 · log₁₀(Re) − 0.65)^(−2.3)  
 3. **Wall shear stress:** τ_w = 0.5 · ρ · U² · Cf  
 4. **Friction velocity:** u_τ = √(τ_w / ρ)  
-5. **First-cell height:** Δy = y⁺ · \mu / u_τ  
+5. **First-cell height:** Δy = y⁺ · μ / u_τ ·ρ 
 
 > **Note:** This uses a flat-plate boundary layer approximation. 
 > Results are a good starting estimate; always verify with your 
