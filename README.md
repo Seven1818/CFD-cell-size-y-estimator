@@ -45,7 +45,7 @@ The tool implements the following sequence [1]:
    Cf = (2 · log₁₀(Re) − 0.65)^(−2.3)  
 3. **Wall shear stress:** τ_w = 0.5 · ρ · U² · Cf  
 4. **Friction velocity:** u_τ = √(τ_w / ρ)  
-5. **First-cell height:** Δy = y⁺ · μ / u_τ ·ρ 
+5. **First-cell height:** Δy = y⁺ · μ /( u_τ ·ρ) 
 
 > **Note:** This uses a flat-plate boundary layer approximation. 
 > Results are a good starting estimate; always verify with your 
